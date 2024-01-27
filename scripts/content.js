@@ -1,8 +1,21 @@
-async function plasticsCheck () {
-  const polyester = document.body.textContent.includes('polyester');
+const reported = new Set();
 
-  if (polyester) {
-    await chrome.runtime.sendMessage({ detected: ['polyester'] });
+async function plasticsCheck () {
+  const detected = []
+
+  const testFor = [
+    'polyester'
+  ].filter(t => !reported.has(t));
+
+  for (const test in testFor) {
+    if (document.body.textContent.includes(test)) {
+      reported.add(test);
+      detected.push(test);
+    }
+  }
+
+  if (detected.length > 0) {
+    await chrome.runtime.sendMessage({ detected });
   }
 }
 
