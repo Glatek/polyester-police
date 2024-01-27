@@ -4,7 +4,7 @@ chrome.runtime.onMessage.addListener(
       await chrome.notifications.create(crypto.randomUUID(), {
         type: "basic",
         title: "Polyester Policy",
-        message: `This page contains the string ${request.detected.join('')}`,
+        message: `This page contains the string${request.detected.length > 1 ? 's' : ''} ${request.detected.join(', ')}`,
         iconUrl: "../img/logo.png"
       });
   }

@@ -4,11 +4,13 @@ async function plasticsCheck () {
   const detected = []
 
   const testFor = [
-    'polyester'
+    'polyester',
+    'polyamid',
+    'elastan'
   ].filter(t => !reported.has(t));
 
-  for (const test in testFor) {
-    if (document.body.textContent.includes(test)) {
+  for (const test of testFor) {
+    if (document.body.textContent.toLocaleLowerCase().includes(test)) {
       reported.add(test);
       detected.push(test);
     }
