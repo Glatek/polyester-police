@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Polyester Police",
+  "description": "Get warnings for websites selling plastics",
+  "version": "0.0.1",
+  "permissions": [
+    "notifications"
+  ],
+  "background": {
+    "service_worker": "scripts/service_worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "js": ["scripts/content.js"],
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ]
+    }
+  ]
+}
