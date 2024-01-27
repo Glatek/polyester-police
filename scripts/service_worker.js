@@ -1,6 +1,6 @@
 chrome.runtime.onMessage.addListener(
   async (request) => {
-    if (request.detected)
+    if (request.detected.length > 0)
       await chrome.notifications.create(crypto.randomUUID(), {
         type: "basic",
         title: "Polyester Policy",
